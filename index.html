@@ -1,0 +1,104 @@
+<html>
+    <head>
+       <title>جلسه 14</title>
+       <link rel="stylesheet" href="assetes/css/style.css" />
+       <link rel="stylesheet" href="assetes/css/fontawesome/brands.css" />
+       <link rel="stylesheet" href="assetes/css/fontawesome/fontawesome.css">
+       <link rel="stylesheet" href="assetes/css/fontawesome/regular.css" />
+       <link rel="stylesheet" href="assetes/css/fontawesome/solid.css" />
+    </head>
+    <body>
+        <div class="effects">
+            <div class="container">
+                <div class="expandpart">
+                    <div class="level"  onclick="expand(this)">
+                        <h>بخش اول </h> 
+                        <i class="fa-solid fa-plus" ></i>                  
+                    </div>   
+                    <div class="desc" >
+                    توضیحات بخش اول    
+                    </div> 
+                </div>
+                <div class="expandpart">
+                    <div class="level" onclick="expand(this)">
+                        <h>بخش دوم </h> 
+                        <i class="fa-solid fa-plus" ></i>                  
+                    </div>   
+                    <div class="desc" >
+                        توضیحات بخش دوم    
+                    </div>  
+                </div>
+                <div class="expandpart">
+                    <div class="level" onclick="expand(this)">
+                        <h>بخش سوم </h> 
+                        <i class="fa-solid fa-plus" ></i>                  
+                    </div>   
+                    <div class="desc" >
+                        توضیحات بخش سوم    
+                    </div>
+                </div> 
+                <div class="expandpart">
+                    <div class="level" onclick="expand(this)">
+                        <h>بخش چهارم </h> 
+                        <i class="fa-solid fa-plus" ></i>                  
+                    </div>   
+                    <div class="desc" >
+                        توضیحات بخش چهارم    
+                    </div>  
+                </div>                           
+            </div>
+        </div> 
+        <div class="BMI">
+            <div class="container">
+                <div class="features">
+                    <div class="group">
+                        <label>قد خود را وارد کنید </label>
+                        <input id="height"/>
+                        <span>سانتیمتر</span>
+                    </div> 
+                    <div class="group">   
+                        <label>وزن خود را وارد کنید </label>
+                        <input id="weight"/>
+                        <span>کیلوگرم</span>
+                    </div>    
+                </div>
+                <button onclick="calculateBMI(height.value,weight.value)">محاسبه BMI</button>
+                <div class="result">
+                  <label id="result">نتیجه: </label>
+                </div>  
+            </div>    
+        </div>         
+        <script>
+          function expand(element) {
+                    var x= element.nextElementSibling;
+                    if (x.style.display === "none") {
+                                                        element.children.item(1).style.transform= "rotate(45deg)";
+                                                        x.style.display = "block";
+                                                        element.style.color="yellow";
+                                                        
+                                                    } else {
+                                                        element.children.item(1).style.transform = "rotate(0deg)";
+                                                        x.style.display = "none";
+                                                        element.style.color="#fff";
+                                                    }
+                   }
+          function calculateBMI(height,weight){      
+                var bmi = weight/((height/100)**2);
+                var res= document.getElementById("result");
+                 res.innerHTML = bmi.toPrecision(4);
+                if (bmi < 18.5) {
+                    res.style.backgroundColor = "#ffe355";
+                }
+                if (18.5 < bmi && bmi < 24.9) {
+                    res.style.backgroundColor = "#5cf175";
+                }
+                if (25 < bmi && bmi < 29.9) {
+                    res.style.backgroundColor = "#fd8f50";
+                }
+                if (bmi >= 30) {
+                    res.style.backgroundColor = "#e94949";
+                } 
+          }         
+        </script>
+    </body>
+</html>
